@@ -1,0 +1,144 @@
+/* Top nav */
+
+.top-nav {
+  min-width: calc(100vw - 2 * var(--nav-margin-width));
+  min-height: var(--nav-height);
+  flex-basis: var(--nav-height);
+
+  margin: var(--nav-margin-width);
+  margin-bottom: 0;
+  border: var(--nav-border);
+  padding: var(--nav-padding-width);
+
+  display: flex;
+  align-items: center;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.frong-logo {
+  min-width: 40px;
+}
+
+/* Grow middle spacer to space left and right side of nav */
+.site-title {
+  padding: 5px;
+
+  flex-grow: 1;
+
+  text-align: center;
+}
+
+/* Right menu for icons on nav */
+.top-nav-right-spacer {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 20vw;
+}
+
+.top-nav-icons {
+  height: fit-content;
+
+  position: fixed;
+  top: calc(var(--nav-icon-size) * 0.5);
+  right: calc(var(--nav-icon-size) * 0.5);
+}
+
+.nav-icon {
+  font-size: var(--nav-icon-size);
+}
+
+.below-nav {
+  margin: 0 var(--nav-margin-width);
+
+  flex-grow: 1;
+
+  display: flex;
+
+  overflow: hidden;
+}
+
+/* Side nav */
+
+.side-nav {
+  max-width: 25dvw;
+  min-width: fit-content;
+  height: 100%;
+
+  position: relative;
+
+  padding-bottom: 1.3rem;
+
+  border-left: var(--nav-border);
+  border-right: var(--nav-border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav-line {
+  padding: 3px var(--nav-padding-width);
+
+  display: flex;
+  align-items: center;
+
+  font-size: 1.2rem;
+}
+
+.side-nav-line:nth-of-type(odd) {
+  background-color: var(--content-background-color);
+}
+
+.side-nav-icon {
+  height: var(--nav-icon-size);
+  aspect-ratio: 1 / 1;
+
+  margin-right: 5px;
+}
+
+.side-nav-link {
+  color: var(--frong-color);
+  text-decoration: underline;
+}
+
+/* Toggle side nav expanded */
+.side-nav-toggle {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+
+  position: absolute;
+  top: 50%;
+  right: calc(-0.5 * var(--nav-border-width));
+  transform: translateX(50%);
+
+  background-color: var(--white);
+  color: var(--frong-color);
+
+  border: 2px solid var(--frong-color);
+  border-radius: 5px;
+
+  margin-right: 0;
+}
+
+.side-nav:hover .side-nav-toggle {
+  opacity: 1;
+}
+
+/* Page content after displaying both navs */
+
+.below-nav .page-content {
+  flex-grow: 1;
+
+  padding: var(--page-content-padding-width);
+
+  background-color: var(--content-background-color);
+}
+
+@media only screen and (max-width: 767px) {
+  .side-nav-toggle {
+    right: calc(-0.5 * var(--nav-border-width) + 4px);
+
+    opacity: 1 !important;
+  }
+}

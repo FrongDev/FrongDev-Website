@@ -1,0 +1,39 @@
+/* Dark mode */
+:root {
+  --background-color: var(--black);
+  --text-color: var(--white);
+  --content-background-color: var(--dark-gray);
+  --disabled-color: var(--disabled-color-dark);
+}
+
+/* Light mode */
+.light {
+  --background-color: var(--white);
+  --text-color: var(--black);
+  --content-background-color: var(--light-gray);
+  --disabled-color: var(--disabled-color-light);
+}
+
+/* Apply theming */
+#site-container {
+  background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.fa-icon {
+  color: var(--text-color);
+}
+
+select,
+input,
+button,
+textarea {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

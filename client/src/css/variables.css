@@ -1,0 +1,59 @@
+/* Color variables */
+:root {
+  --black: #121212;
+  --dark-gray: #1f1f1f;
+  --disabled-color-dark: #2e2e2e;
+
+  --white: #f0f0f0;
+  --light-gray: #cccccc;
+  --disabled-color-light: #b9b9b9;
+
+  --frong-color: #6d75a3;
+  --light-green: #60b99a;
+  --red: rgb(165, 53, 53);
+
+  --link-color: var(--frong-color);
+}
+
+/* Random constants */
+:root {
+  --select-border-radius: 4px;
+}
+
+/* Top nav stuff */
+:root {
+  --nav-height: 6rem;
+
+  --nav-margin-width: 5px;
+  --nav-border-width: 3px;
+  --nav-padding-width: 4px;
+
+  --nav-border: var(--nav-border-width) solid var(--frong-color);
+
+  --logo-size: calc(var(--nav-height) - 2 * var(--nav-padding-width));
+
+  --nav-icon-size: 1.5rem;
+
+  --page-content-padding-width: 10px;
+}
+
+/* Dev blog stuff */
+:root {
+  --dev-post-gap: 8px;
+
+  --dev-post-title-font-size: 1.8rem;
+  --dev-post-date-font-size: 0.8rem;
+  --dev-post-content-font-size: 1rem;
+
+  --dev-post-border-radius: 5px;
+}
+
+/* Text game stuff */
+:root {
+  --text-game-padding: 8px calc(0.3 * var(--nav-icon-size));
+
+  --text-game-line-font-size: 1rem;
+  --text-game-output-gap: 1rem;
+
+  --text-game-input-height: 2rem;
+}
