@@ -50,6 +50,7 @@
 }
 
 .text-game-output {
+  min-width: 0;
   height: fit-content;
 
   flex-grow: 1;

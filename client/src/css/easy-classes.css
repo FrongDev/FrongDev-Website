@@ -12,6 +12,10 @@ div.break {
   height: 1rem;
 }
 
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
 /* Width / Height stuff */
 .full-size {
   width: 100%;

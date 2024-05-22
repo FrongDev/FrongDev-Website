@@ -37,16 +37,8 @@
   max-width: 20vw;
 }
 
-.top-nav-icons {
-  height: fit-content;
-
-  position: fixed;
-  top: calc(var(--nav-icon-size) * 0.5);
-  right: calc(var(--nav-icon-size) * 0.5);
-}
-
 .nav-icon {
-  font-size: var(--nav-icon-size);
+  height: var(--nav-icon-size);
 }
 
 .below-nav {
@@ -57,6 +49,15 @@
   display: flex;
 
   overflow: hidden;
+}
+
+.dark-toggle {
+  height: var(--nav-icon-size);
+  max-height: var(--nav-icon-size);
+
+  position: fixed;
+  top: calc(var(--nav-icon-size) * 0.5);
+  right: calc(var(--nav-icon-size) * 0.5);
 }
 
 /* Side nav */

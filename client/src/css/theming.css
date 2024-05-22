@@ -4,6 +4,7 @@
   --text-color: var(--white);
   --content-background-color: var(--dark-gray);
   --disabled-color: var(--disabled-color-dark);
+  --std-outline-color: var(--dark-outline-color);
 }
 
 /* Light mode */
@@ -12,6 +13,7 @@
   --text-color: var(--black);
   --content-background-color: var(--light-gray);
   --disabled-color: var(--disabled-color-light);
+  --std-outline-color: var(--light-outline-color);
 }
 
 /* Apply theming */
@@ -36,4 +38,5 @@ button,
 textarea {
   background-color: var(--background-color);
   color: var(--text-color);
+  border: 2px solid var(--std-outline-color);
 }

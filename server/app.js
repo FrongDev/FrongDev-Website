@@ -32,9 +32,9 @@ app.use("/api/v1/account", accountRouter);
 const errorHandler = require("./middleware/error_handler.js");
 app.use(errorHandler);
 
-// 404
-app.all("*", (req, res) => {
-  res.status(404).send("Resource not found");
+// SPA Fallback
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 async function start() {

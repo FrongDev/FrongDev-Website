@@ -24,6 +24,8 @@ function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
 
   function inputFun(prompt) {
     return new Promise((resolve) => {
+      inputRef.current.focus();
+
       function submit() {
         submitRef.current.removeEventListener("click", submit);
         inputRef.current.removeEventListener("keypress", handleKeyPress);

@@ -2,10 +2,12 @@
 :root {
   --black: #121212;
   --dark-gray: #1f1f1f;
+  --dark-outline-color: #5f5f5f;
   --disabled-color-dark: #2e2e2e;
 
   --white: #f0f0f0;
   --light-gray: #cccccc;
+  --light-outline-color: #696969;
   --disabled-color-light: #b9b9b9;
 
   --frong-color: #6d75a3;

@@ -125,7 +125,7 @@ function SingleDevPost() {
 
   return (
     <BothNavs>
-      <div className="content-container">
+      <div className="content-container overflow-y-scroll">
         <h1 className="content-title serif align-self-center">Frong Devblog</h1>
         {/* Post */}
         <DevPost

@@ -1,6 +1,7 @@
 # flyctl launch added from server\.gitignore
 server\node_modules
 server\**\.env
+server\dist
 client\**\.env
 client\node_modules
 fly.toml

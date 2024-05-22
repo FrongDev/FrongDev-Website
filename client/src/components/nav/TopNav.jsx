@@ -23,13 +23,11 @@ function TopNav() {
       <img src={frong_img} className="frong-logo" />
       <h1 className="site-title serif">FRONG</h1>
       <div className="top-nav-right-spacer"></div>
-      <div className="top-nav-icons full-height flex-column flex-justify-start">
-        <FAIconWrapper
-          icon={faCircleHalfStroke}
-          onClick={toggleDarkMode}
-          className="nav-icon"
-        />
-      </div>
+      <FAIconWrapper
+        icon={faCircleHalfStroke}
+        onClick={toggleDarkMode}
+        className="nav-icon dark-toggle"
+      />
     </nav>
   );
 }
