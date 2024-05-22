@@ -24,7 +24,7 @@ function Games() {
         <div className="std-grid">
           {gamePages.map(({ label, path, img }) => {
             return (
-              <Link key={path} to={path} className="std-grid-item game-link">
+              <Link to={path} className="std-grid-item game-link" key={path}>
                 <img src={img} />
                 <p>{label}</p>
               </Link>

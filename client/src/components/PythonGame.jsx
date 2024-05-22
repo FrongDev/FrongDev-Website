@@ -74,8 +74,12 @@ function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
           className="text-game-play-button"
         />
         <div className="text-game-output">
-          {output.map((line) => {
-            return <p className="text-game-output-line">{line}</p>;
+          {output.map((line, index) => {
+            return (
+              <p className="text-game-output-line" key={index}>
+                {line}
+              </p>
+            );
           })}
           <input ref={inputRef} />
         </div>

@@ -23,6 +23,8 @@
   background-color: var(--background-color);
   border: 3px solid var(--background-color);
   border-radius: 2px;
+
+  aspect-ratio: 1 / 1;
 }
 
 .dev-blog-left-controls p {
@@ -145,6 +147,7 @@
 
   .dev-blog-left-controls {
     grid-area: page;
+    gap: 1rem;
   }
 
   .dev-blog-top-row > .content-title {
@@ -153,6 +156,11 @@
 
   .dev-blog-right-controls {
     grid-area: size;
+  }
+
+  .dev-blog-left-controls,
+  .dev-blog-right-controls {
+    font-size: 1.5rem;
   }
 }
 

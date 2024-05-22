@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
+// Fontawesome
+import FAIconWrapper from "../../components/FAIconWrapper.jsx";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 // URL of backend
 const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API;
 
@@ -21,7 +25,7 @@ function EditDevPost() {
 
   // Get id from redirect
   const location = useLocation();
-  const { devPostId } = location.state;
+  const { devPostId, fromPageNum } = location.state;
 
   // Fetch dev post
   const [devPost, setDevPost] = useState({});
@@ -95,7 +99,22 @@ function EditDevPost() {
   return (
     <BothNavs>
       <div className="content-container">
-        <h1 className="content-title serif align-self-center">Frong Devblog</h1>
+        <div className="flex-row flex-justify-space-between">
+          <div className="dev-blog-left-controls">
+            <FAIconWrapper
+              icon={faArrowLeft}
+              onClick={() =>
+                navigate("/", {
+                  state: { returnToPageNum: fromPageNum ?? 1 },
+                })
+              }
+            />
+          </div>
+          <h1 className="content-title serif align-self-center">
+            Frong Devblog
+          </h1>
+          <div className="flex-grow-1"></div>
+        </div>
         {isDevPostFetched && (
           <DevPostEditForm
             handleSubmit={handleSubmit}

@@ -31,7 +31,7 @@ function SideNav() {
     <nav className="side-nav">
       {/* Links */}
       {navPages.map(({ label, path, icon }) => {
-        return <SideNavLink key={path} to={path} icon={icon} text={label} />;
+        return <SideNavLink to={path} icon={icon} text={label} key={path} />;
       })}
 
       {/* Expand toggle */}

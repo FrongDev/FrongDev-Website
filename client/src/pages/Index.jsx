@@ -1,6 +1,6 @@
 // Imports
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Fontawesome
@@ -37,8 +37,13 @@ function Index() {
 
   const { isAdmin } = useContext(AccountContext);
 
+  // If returned to from a single dev post restore the page num
+  const location = useLocation();
+  const returnToPageNum = location?.state?.returnToPageNum;
+  const initialPageNum = returnToPageNum || 1;
+
   // Page for dev posts
-  const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(initialPageNum);
   const { devBlogPageSize, setDevBlogPageSize } = useContext(SettingsContext);
   const [devPostPage, setDevPostPage] = useState([]);
 
@@ -169,6 +174,7 @@ function Index() {
                 content={content}
                 showCommentBtn={true}
                 showEditBtn={isAdmin}
+                pageNum={pageNum}
               />
             );
           })}

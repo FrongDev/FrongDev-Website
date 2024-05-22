@@ -13,6 +13,7 @@ function DevPost({
   content,
   showCommentBtn,
   showEditBtn,
+  pageNum,
 }) {
   const navigate = useNavigate();
 
@@ -24,7 +25,9 @@ function DevPost({
           <FAIconWrapper
             icon={faPenToSquare}
             onClick={() =>
-              navigate("/editDevPost", { state: { devPostId: id } })
+              navigate("/editDevPost", {
+                state: { devPostId: id, fromPageNum: pageNum },
+              })
             }
             className="nav-icon"
           />
@@ -38,7 +41,9 @@ function DevPost({
           <br />
           <button
             onClick={() =>
-              navigate("/viewDevPost", { state: { devPostId: id } })
+              navigate("/viewDevPost", {
+                state: { devPostId: id, fromPageNum: pageNum },
+              })
             }
             className="dev-post-comment-btn"
           >

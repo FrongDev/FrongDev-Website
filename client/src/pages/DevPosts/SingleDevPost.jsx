@@ -1,13 +1,17 @@
 // Imports
 import { useState, useEffect, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import TextareaAutosize from "react-textarea-autosize";
 
 // Fontawesome
 import FAIconWrapper from "../../components/FAIconWrapper.jsx";
-import { faUser, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faUser,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 // URL of backend
 const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API;
@@ -24,9 +28,11 @@ import { DevPost } from "../../components/DevPost.jsx";
 
 // Webpage container
 function SingleDevPost() {
+  const navigate = useNavigate();
+
   // Get id from redirect
   const location = useLocation();
-  const { devPostId } = location.state;
+  const { devPostId, fromPageNum } = location.state;
 
   const { isAdmin } = useContext(AccountContext);
 
@@ -125,45 +131,63 @@ function SingleDevPost() {
 
   return (
     <BothNavs>
-      <div className="content-container overflow-y-scroll">
-        <h1 className="content-title serif align-self-center">Frong Devblog</h1>
-        {/* Post */}
-        <DevPost
-          id={devPostId}
-          title={title}
-          readableDate={readableDate}
-          content={content}
-          showEditBtn={isAdmin}
-        />
-
-        {/* Make comment */}
-        <form
-          className="dev-post-comments-container"
-          onSubmit={handleSubmitComment}
-        >
-          <h3>Make a comment:</h3>
-          <TextareaAutosize
-            value={userCommentInput}
-            onChange={(e) => setUserCommentInput(e.target.value)}
+      <div className="content-container">
+        <div className="flex-row flex-justify-space-between">
+          <div className="dev-blog-left-controls">
+            <FAIconWrapper
+              icon={faArrowLeft}
+              onClick={() =>
+                navigate("/", {
+                  state: { returnToPageNum: fromPageNum ?? 1 },
+                })
+              }
+            />
+          </div>
+          <h1 className="content-title serif align-self-center">
+            Frong Devblog
+          </h1>
+          <div className="flex-grow-1"></div>
+        </div>
+        <div className="full-size overflow-y-scroll">
+          {/* Post */}
+          <DevPost
+            id={devPostId}
+            title={title}
+            readableDate={readableDate}
+            content={content}
+            showEditBtn={isAdmin}
           />
-          <button type="submit">Submit</button>
-        </form>
 
-        {/* Display comments */}
-        <div className="dev-post-comments-container">
-          <h3 className="title">Comments:</h3>
-          {comments.map(({ id, authorUsername, readableDate, comment }) => {
-            return (
-              <DevPostComment
-                id={id}
-                authorUsername={authorUsername}
-                readableDate={readableDate}
-                comment={comment}
-                showDeleteBtn={isAdmin}
-                deleteComment={deleteComment}
-              />
-            );
-          })}
+          {/* Make comment */}
+          <form
+            className="dev-post-comments-container"
+            onSubmit={handleSubmitComment}
+          >
+            <h3>Make a comment:</h3>
+            <TextareaAutosize
+              value={userCommentInput}
+              onChange={(e) => setUserCommentInput(e.target.value)}
+            />
+            <button type="submit">Submit</button>
+          </form>
+
+          {/* Display comments */}
+          <div className="dev-post-comments-container">
+            <h3 className="title">Comments:</h3>
+            {comments.map(({ id, authorUsername, readableDate, comment }) => {
+              return (
+                <DevPostComment
+                  id={id}
+                  authorUsername={authorUsername}
+                  readableDate={readableDate}
+                  comment={comment}
+                  showDeleteBtn={isAdmin}
+                  deleteComment={deleteComment}
+                  key={id}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </BothNavs>
