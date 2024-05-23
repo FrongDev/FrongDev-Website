@@ -68,10 +68,10 @@ function Index() {
     }
   }
 
-  // Initial fetch
+  // Initial fetch / configure page size
   useEffect(() => {
-    fetchDevPosts(devBlogPageSize, pageNum);
-  }, []);
+    changePageSize(devBlogPageSize);
+  }, [devBlogPageSize]);
 
   // Set pageNum
   function goToPage(newPageNum) {
@@ -107,10 +107,6 @@ function Index() {
 
     fetchDevPosts(newPageSize, newPageNum);
   }
-
-  useEffect(() => {
-    changePageSize(devBlogPageSize);
-  }, [devBlogPageSize]);
 
   return (
     <BothNavs>
