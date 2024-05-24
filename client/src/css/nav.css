@@ -136,7 +136,9 @@
   background-color: var(--content-background-color);
 }
 
+/* Mobile */
 @media only screen and (max-width: 767px) {
+  /* Nav toggle always visible on mobile */
   .side-nav-toggle {
     right: calc(-0.5 * var(--nav-border-width) + 4px);
 

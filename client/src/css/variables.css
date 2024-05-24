@@ -52,10 +52,19 @@
 
 /* Text game stuff */
 :root {
-  --text-game-padding: 8px calc(0.3 * var(--nav-icon-size));
+  --text-game-container-padding: 8px calc(0.3 * var(--nav-icon-size));
 
-  --text-game-line-font-size: 1rem;
-  --text-game-output-gap: 1rem;
+  --text-game-menu-top-padding: 0.75rem;
+  --text-game-menu-padding: var(--text-game-menu-top-padding) 1ch;
+
+  --text-game-output-gap: 1.5rem;
 
   --text-game-input-height: 2rem;
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  :root {
+    --nav-height: 4rem;
+  }
 }

@@ -1,5 +1,5 @@
 // Imports
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Sk from "skulpt";
 
 // Fontawesome
@@ -11,17 +11,23 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import "../css/text-game.css";
 
 function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
-  const [output, setOutput] = useState(
-    Array.from({ length: LINES_SHOWN }, () => "")
-  );
-
   const inputRef = useRef(null);
+  const outputRef = useRef(null);
   const submitRef = useRef(null);
 
+  // Output is an array of messsages
+  const [output, setOutput] = useState(
+    // Array.from({ length: LINES_SHOWN }, () => "")
+    []
+  );
+
+  // Output appends to the array
   function outputfn(text) {
-    setOutput((prev) => [...prev.slice(-LINES_SHOWN + 1), text]);
+    // setOutput((prev) => [...prev.slice(-LINES_SHOWN + 1), text]);
+    setOutput((prev) => [...prev, text]);
   }
 
+  // Input submitted with event listeners either by submit button or enter key
   function inputFun(prompt) {
     return new Promise((resolve) => {
       inputRef.current.focus();
@@ -50,6 +56,13 @@ function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
     });
   }
 
+  // Auto scroll to end of output when message is appended
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  }, [output]);
+
   async function runPythonCode() {
     try {
       Sk.configure({
@@ -65,27 +78,31 @@ function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
   }
 
   return (
-    <div className="text-game-container">
-      {middleHTML}
-      <div className="text-game-bottom">
-        <FAIconWrapper
-          icon={faPlay}
-          onClick={runPythonCode}
-          className="text-game-play-button"
-        />
-        <div className="text-game-output">
-          {output.map((line, index) => {
-            return (
-              <p className="text-game-output-line" key={index}>
-                {line}
-              </p>
-            );
-          })}
-          <input ref={inputRef} />
+    <div className="text-game-padding">
+      <div className="text-game-container">
+        {middleHTML}
+        <div className="text-game-menu">
+          <div ref={outputRef} className="text-game-output">
+            {output.map((line, index) => {
+              return (
+                <p className="text-game-output-line" key={index}>
+                  {line}
+                </p>
+              );
+            })}
+          </div>
+          <div className="text-game-controls">
+            <FAIconWrapper
+              icon={faPlay}
+              onClick={runPythonCode}
+              className="text-game-play-button"
+            />
+            <input ref={inputRef} className="text-game-input" />
+            <button ref={submitRef} className="text-game-submit">
+              Submit
+            </button>
+          </div>
         </div>
-        <button ref={submitRef} className="text-game-submit">
-          Submit
-        </button>
       </div>
     </div>
   );
