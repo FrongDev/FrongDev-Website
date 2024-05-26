@@ -21,7 +21,7 @@ function Games() {
     <BothNavs>
       <div className="content-container">
         <h1 className="content-title serif self-center">Frong Games</h1>
-        <div className="grid grid-cols-1 gap-[10px] overflow-x-hidden overflow-y-scroll px-[14px] text-center md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-[10px] overflow-x-hidden overflow-y-scroll px-[14px] text-center md:grid-cols-3 lg:grid-cols-5">
           {gamePages.map(({ label, path, img }) => {
             return (
               <Link
