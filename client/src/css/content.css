@@ -11,8 +11,14 @@
 }
 
 .content-title {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 900;
 
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .content-title {
+    font-size: 1.875rem; /* Adjust as needed */
+  }
 }

@@ -10,6 +10,7 @@ import {
   faAnglesLeft,
   faAngleRight,
   faAnglesRight,
+  faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 
 // URL of backend
@@ -150,21 +151,19 @@ function Index() {
                 return <option key={x}>{x}</option>;
               })}
             </select>
+            {isAdmin && (
+              <FAIconWrapper
+                icon={faPencil}
+                onClick={() =>
+                  navigate("/newDevPost", {
+                    state: { fromPageNum: pageNum },
+                  })
+                }
+                className="aspect-square h-5 rounded-[20%] border-play-btn-border-width border-[--light-green] bg-[--light-green] text-my-white"
+              />
+            )}
           </div>
         </div>
-
-        {isAdmin && (
-          <button
-            onClick={() =>
-              navigate("/newDevPost", {
-                state: { fromPageNum: pageNum },
-              })
-            }
-            className="self-center"
-          >
-            New Dev Post
-          </button>
-        )}
 
         <div className="flex flex-col gap-2 overflow-y-scroll px-[12px]">
           {devPostPage.map(({ title, content, readableDate, id }) => {
