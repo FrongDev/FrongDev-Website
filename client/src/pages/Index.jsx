@@ -166,7 +166,7 @@ function Index() {
           </button>
         )}
 
-        <div className="flex flex-col gap-2 overflow-y-scroll">
+        <div className="flex flex-col gap-2 overflow-y-scroll px-[12px]">
           {devPostPage.map(({ title, content, readableDate, id }) => {
             return (
               <DevPost
