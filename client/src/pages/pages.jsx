@@ -2,6 +2,7 @@
 import { Index } from "./Index.jsx";
 import { Games } from "./Games.jsx";
 import { BowserGame } from "./BowserGame.jsx";
+import { BlackjackGame } from "./BlackjackGame.jsx";
 import { Gallery } from "./Gallery.jsx";
 import { LoginPage } from "./LoginPage.jsx";
 import { SignupPage } from "./SignupPage.jsx";
@@ -39,6 +40,12 @@ const gamePages = [
     Element: BowserGame,
     img: bowserPlushImg,
   },
+  // {
+  //   label: "Blackjack Game",
+  //   path: "/blackjack-game",
+  //   Element: BlackjackGame,
+  //   img: bowserPlushImg,
+  // },
 ];
 
 const extraPages = [

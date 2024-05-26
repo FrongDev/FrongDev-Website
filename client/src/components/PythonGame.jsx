@@ -10,20 +10,16 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 // CSS
 import "../css/text-game.css";
 
-function PythonGame({ gameCode, middleHTML, LINES_SHOWN }) {
+function PythonGame({ gameCode, middleHTML }) {
   const inputRef = useRef(null);
   const outputRef = useRef(null);
   const submitRef = useRef(null);
 
   // Output is an array of messsages
-  const [output, setOutput] = useState(
-    // Array.from({ length: LINES_SHOWN }, () => "")
-    []
-  );
+  const [output, setOutput] = useState([]);
 
   // Output appends to the array
   function outputfn(text) {
-    // setOutput((prev) => [...prev.slice(-LINES_SHOWN + 1), text]);
     setOutput((prev) => [...prev, text]);
   }
 

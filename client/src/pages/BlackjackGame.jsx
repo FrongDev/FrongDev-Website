@@ -1,5 +1,5 @@
 // Game code
-import bowserGame from "../games/bowserGame.js";
+import blackjackGame from "../games/blackjackGame.js";
 
 // Fontawesome
 import "../components/FAIconWrapper.jsx";
@@ -11,11 +11,11 @@ import bowserImg from "../public/games/bowser.png";
 import { PythonGame } from "../components/PythonGame.jsx";
 import { BothNavs } from "../components/nav/BothNavs.jsx";
 
-function BowserGame() {
+function BlackjackGame() {
   return (
     <BothNavs>
       <PythonGame
-        gameCode={bowserGame}
+        gameCode={blackjackGame}
         middleHTML={
           <div className="text-game-img-container">
             <img src={bowserImg} className="text-game-img" />
@@ -26,4 +26,4 @@ function BowserGame() {
   );
 }
 
-export { BowserGame };
+export { BlackjackGame };
