@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-// CSS
-import "../css/login.css";
-
 // Contexts
 import { AccountContext } from "../Contexts.jsx";
+
+// CSS
+import "../css/content.css";
 
 // My components
 import { BothNavs } from "../components/nav/BothNavs.jsx";
@@ -38,33 +38,39 @@ function SignupPage() {
 
   return (
     <BothNavs>
-      <div className="login-content content-container flex-align-center">
-        <h1 className="content-title serif align-self-center">
+      <div className="content-container flex items-center gap-[20px]">
+        <h1 className="content-title serif items-center">
           Sign up for FrongNet
         </h1>
-        <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="login-line">
+        <form
+          className="flex w-[70%] min-w-[25ch] max-w-[40ch] flex-col items-center gap-[1rem]"
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <div className="w-full">
             <p>Username:</p>
             <input
               type="text"
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
+              className="w-full"
             ></input>
           </div>
-          <div className="login-line">
+          <div className="w-full">
             <p>Password:</p>
             <input
               type="password"
               value={passwordInput}
               onChange={(e) => setPasswordInput(e.target.value)}
+              className="w-full"
             ></input>
           </div>
-          <div className="login-line">
+          <div className="w-full">
             <p>Confirm Password:</p>
             <input
               type="password"
               value={confirmPasswordInput}
               onChange={(e) => setConfirmPasswordInput(e.target.value)}
+              className="w-full"
             ></input>
           </div>
           <button type="submit">Submit</button>

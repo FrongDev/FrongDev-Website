@@ -18,6 +18,7 @@ const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API;
 
 // CSS
 import "../../css/dev-blog.css";
+import "../../css/content.css";
 
 // Contexts
 import { AccountContext } from "../../Contexts.jsx";
@@ -44,7 +45,7 @@ function SingleDevPost() {
   async function fetchDevPost() {
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/devPost/getDevPost/${devPostId}`
+        `${BACKEND_API_URL}/devPost/getDevPost/${devPostId}`,
       );
 
       setDevPost(response.data);
@@ -64,7 +65,7 @@ function SingleDevPost() {
   async function fetchPostComments() {
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/devPost/getDevPostComments/${devPostId}`
+        `${BACKEND_API_URL}/devPost/getDevPostComments/${devPostId}`,
       );
 
       setComments(response.data);
@@ -94,7 +95,7 @@ function SingleDevPost() {
       await axios.post(
         `${BACKEND_API_URL}/devPost/createComment/${devPostId}`,
         { comment: userCommentInput },
-        { headers: { authorization: `Bearer ${token}` } }
+        { headers: { authorization: `Bearer ${token}` } },
       );
 
       alert("Comment successfully created");
@@ -118,7 +119,7 @@ function SingleDevPost() {
     try {
       await axios.delete(
         `${BACKEND_API_URL}/devPost/deleteComment/${commentId}`,
-        { headers: { authorization: `Bearer ${token}` } }
+        { headers: { authorization: `Bearer ${token}` } },
       );
 
       alert("Successfully deleted");
@@ -132,8 +133,8 @@ function SingleDevPost() {
   return (
     <BothNavs>
       <div className="content-container">
-        <div className="flex-row flex-justify-space-between">
-          <div className="dev-blog-left-controls">
+        <div className="flex items-center justify-between">
+          <div className="dev-blog-left-controls flex-grow basis-0 text-xl">
             <FAIconWrapper
               icon={faArrowLeft}
               onClick={() =>
@@ -143,12 +144,12 @@ function SingleDevPost() {
               }
             />
           </div>
-          <h1 className="content-title serif align-self-center">
+          <h1 className="serif content-title mb-[0.3rem] self-center">
             Frong Devblog
           </h1>
-          <div className="flex-grow-1"></div>
+          <div className="flex-grow"></div>
         </div>
-        <div className="full-size overflow-y-scroll">
+        <div className="flex h-full w-full flex-col gap-3 overflow-y-scroll px-[12px]">
           {/* Post */}
           <DevPost
             id={devPostId}
@@ -160,20 +161,23 @@ function SingleDevPost() {
 
           {/* Make comment */}
           <form
-            className="dev-post-comments-container"
+            className="flex flex-col gap-[1rem] rounded-[--dev-post-border-radius] bg-[--background-color] px-[1.5ch] py-[1ch]"
             onSubmit={handleSubmitComment}
           >
-            <h3>Make a comment:</h3>
+            <h3 className="font-semibold">Make a comment:</h3>
             <TextareaAutosize
               value={userCommentInput}
               onChange={(e) => setUserCommentInput(e.target.value)}
+              className="min-h-[4rem] w-full"
             />
             <button type="submit">Submit</button>
           </form>
 
           {/* Display comments */}
-          <div className="dev-post-comments-container">
-            <h3 className="title">Comments:</h3>
+          <div className="flex flex-col gap-[1rem] rounded-[--dev-post-border-radius] bg-[--background-color] px-[1.5ch] py-[1ch]">
+            <h3 className="border-b-nav-border-width border-frong-color font-bold">
+              Comments:
+            </h3>
             {comments.map(({ id, authorUsername, readableDate, comment }) => {
               return (
                 <DevPostComment
@@ -203,16 +207,16 @@ function DevPostComment({
   deleteComment,
 }) {
   return (
-    <div className="dev-post-comment">
-      <div className="dev-post-comment-author">
-        <FAIconWrapper icon={faUser} />
-        <p>{authorUsername}</p>
+    <div className="rounded-[--dev-post-border-radius] bg-[--content-background-color] p-[5px]">
+      <div className="flex items-center gap-[5px]">
+        <FAIconWrapper icon={faUser} inline={true} />
+        <p className="text-xl">{authorUsername}</p>
         <div className="flex-grow-1" />
         {showDeleteBtn && (
           <FAIconWrapper
             icon={faTrash}
             onClick={() => deleteComment(id)}
-            className="delete-comment-btn"
+            className="rounded-[3px] border-[5px] border-red-600 bg-red-600"
           />
         )}
       </div>

@@ -5,11 +5,13 @@ import { SideNav } from "./SideNav.jsx";
 // Webpage container
 function BothNavs({ children }) {
   return (
-    <div className="full-size flex-column">
+    <div className="flex h-full w-full flex-col">
       <TopNav />
-      <div className="below-nav">
+      <div className="mx-[--nav-margin-width] my-0 flex flex-grow overflow-hidden">
         <SideNav />
-        <div className="page-content">{children}</div>
+        <div className="bg-content-background-color flex-grow p-[--page-content-padding-width]">
+          {children}
+        </div>
       </div>
     </div>
   );

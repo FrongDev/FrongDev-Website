@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import TextareaAutosize from "react-textarea-autosize";
 
-import "../css/edit-dev-post.css";
-
 function DevPostEditForm({
   handleSubmit,
   defaultTitle,
@@ -24,42 +22,50 @@ function DevPostEditForm({
   }
 
   return (
-    <form onSubmit={handleSubmitWrapper} className="dev-post edit-dev-post">
-      <h3>Title:</h3>
+    <form
+      onSubmit={handleSubmitWrapper}
+      className="rounded-[--dev-post-border-radius] bg-[--background-color] p-[6px]"
+    >
+      <h3 className="font-bold">Title:</h3>
       <TextareaAutosize
         value={editTitleInp}
         onChange={(e) => setEditTitleInp(e.target.value)}
+        className="w-full"
       />
 
-      <div className="break" />
+      <div className="h-4" />
 
-      <h3>Date:</h3>
+      <h3 className="font-bold">Date:</h3>
       <input
         type="date"
         value={editDateInp}
         onChange={(e) => setEditDateInp(e.target.value)}
+        className="w-full"
       />
 
-      <div className="break" />
+      <div className="h-4" />
 
-      <h3>Content:</h3>
+      <h3 className="font-bold">Content:</h3>
       <TextareaAutosize
         value={editContentInp}
         onChange={(e) => setEditContentInp(e.target.value)}
+        className="w-full"
       />
 
-      <div className="break" />
+      <div className="h-4" />
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="w-full">
+        Submit
+      </button>
 
       {showDeleteBtn && (
         <>
-          <div className="break" />
+          <div className="h-4" />
 
           <button
             type="button"
             onClick={handleDelete}
-            className="dev-edit-delete-btn"
+            className="w-full bg-red-600 text-my-white"
           >
             Delete
           </button>

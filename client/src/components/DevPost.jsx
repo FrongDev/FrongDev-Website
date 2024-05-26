@@ -18,9 +18,11 @@ function DevPost({
   const navigate = useNavigate();
 
   return (
-    <div className="dev-post">
-      <div className="flex-row flex-align-start">
-        <h1 className="dev-post-title">{title}</h1>
+    <div className="rounded-[--dev-post-border-radius] bg-[--background-color] p-[6px]">
+      <div className="flex flex-row items-start">
+        <h1 className="flex-grow text-dev-post-title-font-size font-semibold">
+          {title}
+        </h1>
         {showEditBtn && (
           <FAIconWrapper
             icon={faPenToSquare}
@@ -29,13 +31,13 @@ function DevPost({
                 state: { devPostId: id, fromPageNum: pageNum },
               })
             }
-            className="nav-icon"
+            className="h-[--nav-icon-size]"
           />
         )}
       </div>
-      <h5 className="dev-post-date">{readableDate}</h5>
+      <h5 className="text-dev-post-date-font-size font-bold">{readableDate}</h5>
       <br />
-      <p className="dev-post-content">{content}</p>
+      <p className="text-dev-post-content-font-size">{content}</p>
       {showCommentBtn && (
         <>
           <br />
@@ -45,7 +47,7 @@ function DevPost({
                 state: { devPostId: id, fromPageNum: pageNum },
               })
             }
-            className="dev-post-comment-btn"
+            className="flex items-center gap-[5px]"
           >
             <FAIconWrapper icon={faComment} />
             Comment

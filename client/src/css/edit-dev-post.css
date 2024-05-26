@@ -1,8 +1,0 @@
-.edit-dev-post > * {
-  width: 100%;
-}
-
-.dev-edit-delete-btn {
-  background-color: var(--red);
-  color: var(--white);
-}

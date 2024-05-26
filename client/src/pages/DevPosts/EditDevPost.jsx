@@ -13,7 +13,7 @@ const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API;
 
 // CSS
 import "../../css/dev-blog.css";
-import "../../css/edit-dev-post.css";
+import "../../css/content.css";
 
 // My components
 import { BothNavs } from "../../components/nav/BothNavs.jsx";
@@ -25,7 +25,7 @@ function EditDevPost() {
 
   // Get id from redirect
   const location = useLocation();
-  const { devPostId, fromPageNum } = location.state;
+  const { fromPageNum } = location && location.state ? location.state : 1;
 
   // Fetch dev post
   const [devPost, setDevPost] = useState({});
@@ -35,7 +35,7 @@ function EditDevPost() {
   async function fetchDevPost() {
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/devPost/getDevPost/${devPostId}`
+        `${BACKEND_API_URL}/devPost/getDevPost/${devPostId}`,
       );
 
       setDevPost(response.data);
@@ -62,7 +62,7 @@ function EditDevPost() {
       await axios.patch(
         `${BACKEND_API_URL}/devPost/editDevPost/${devPostId}`,
         { title: editTitleInp, date: editDateInp, content: editContentInp },
-        { headers: { authorization: `Bearer ${token}` } }
+        { headers: { authorization: `Bearer ${token}` } },
       );
 
       alert("Successfully updated");
@@ -85,7 +85,7 @@ function EditDevPost() {
     try {
       await axios.delete(
         `${BACKEND_API_URL}/devPost/deleteDevPost/${devPostId}`,
-        { headers: { authorization: `Bearer ${token}` } }
+        { headers: { authorization: `Bearer ${token}` } },
       );
 
       alert("Successfully deleted");
@@ -99,8 +99,8 @@ function EditDevPost() {
   return (
     <BothNavs>
       <div className="content-container">
-        <div className="flex-row flex-justify-space-between">
-          <div className="dev-blog-left-controls">
+        <div className="flex items-center justify-between">
+          <div className="dev-blog-left-controls flex-grow basis-0 text-xl">
             <FAIconWrapper
               icon={faArrowLeft}
               onClick={() =>
@@ -110,10 +110,10 @@ function EditDevPost() {
               }
             />
           </div>
-          <h1 className="content-title serif align-self-center">
+          <h1 className="serif content-title mb-[0.3rem] self-center">
             Frong Devblog
           </h1>
-          <div className="flex-grow-1"></div>
+          <div className="flex-grow basis-0" />
         </div>
         {isDevPostFetched && (
           <DevPostEditForm

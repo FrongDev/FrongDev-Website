@@ -17,8 +17,8 @@ function BowserGame() {
       <PythonGame
         gameCode={bowserGame}
         middleHTML={
-          <div className="text-game-img-container">
-            <img src={bowserImg} className="text-game-img" />
+          <div className="flex min-h-0 justify-center">
+            <img src={bowserImg} className="aspect-square h-full" />
           </div>
         }
       />

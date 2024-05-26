@@ -24,25 +24,24 @@
 
 /* Top nav stuff */
 :root {
-  --nav-height: 6rem;
+  --top-nav-width: calc(100vw - 2 * var(--nav-margin-width));
+  --top-nav-height: 6rem;
 
   --nav-margin-width: 5px;
   --nav-border-width: 3px;
+  --nav-border: var(--nav-border-width) solid var(--frong-color);
+  --nav-half-border-width: calc(var(--nav-border-width) * 0.5);
   --nav-padding-width: 4px;
 
-  --nav-border: var(--nav-border-width) solid var(--frong-color);
-
-  --logo-size: calc(var(--nav-height) - 2 * var(--nav-padding-width));
+  --logo-size: calc(var(--top-nav-height) - 2 * var(--nav-padding-width));
 
   --nav-icon-size: 1.5rem;
-
+  --nav-icon-half-size: calc(var(--nav-icon-size) * 0.5);
   --page-content-padding-width: 10px;
 }
 
 /* Dev blog stuff */
 :root {
-  --dev-post-gap: 8px;
-
   --dev-post-title-font-size: 1.8rem;
   --dev-post-date-font-size: 0.8rem;
   --dev-post-content-font-size: 1rem;
@@ -60,11 +59,14 @@
   --text-game-output-gap: 1.5rem;
 
   --text-game-input-height: 2rem;
+
+  --play-btn-border-width: 5px;
+  --play-btn-content-size: calc(100% - 2 * var(--play-btn-border-width));
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 640px) {
   :root {
-    --nav-height: 4rem;
+    --top-nav-height: 4rem;
   }
 }

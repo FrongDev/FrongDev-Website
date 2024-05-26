@@ -19,6 +19,7 @@ const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API;
 import { SettingsContext, AccountContext } from "../Contexts.jsx";
 
 // CSS
+import "../css/content.css";
 import "../css/dev-blog.css";
 
 // My components
@@ -55,7 +56,7 @@ function Index() {
   async function fetchDevPosts(pageSize, pageNum) {
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/devPost/getDevPostPage?pageSize=${pageSize}&pageNum=${pageNum}`
+        `${BACKEND_API_URL}/devPost/getDevPostPage?pageSize=${pageSize}&pageNum=${pageNum}`,
       );
       const data = response.data;
 
@@ -111,8 +112,8 @@ function Index() {
   return (
     <BothNavs>
       <div className="content-container">
-        <div className="dev-blog-top-row">
-          <div className="dev-blog-left-controls">
+        <div className="grid w-full grid-cols-4 grid-rows-3 items-center text-center sm:grid-rows-2 md:flex md:flex-row md:justify-between">
+          <div className="dev-blog-left-controls col-span-4 row-span-1 row-start-2 flex items-center justify-center gap-4 text-xl sm:col-span-2 md:basis-full md:justify-start md:gap-1">
             {/* Page 1 */}
             <FAIconWrapper
               icon={faAnglesLeft}
@@ -136,8 +137,10 @@ function Index() {
               className={`${isNextPage ? "" : "disabled"}`}
             />
           </div>
-          <h1 className="content-title serif">Frong Devblog</h1>
-          <div className="dev-blog-right-controls">
+          <h1 className="serif content-title col-span-4 row-span-1 row-start-1 w-full md:min-w-fit">
+            Frong Devblog
+          </h1>
+          <div className="col-span-4 row-span-1 row-start-3 flex items-center justify-center gap-1.5 sm:col-span-2 sm:row-start-2 md:basis-full md:justify-end">
             <p>Page Size:</p>
             <select
               value={devBlogPageSize}
@@ -152,14 +155,18 @@ function Index() {
 
         {isAdmin && (
           <button
-            onClick={() => navigate("/newDevPost")}
-            className="align-self-center"
+            onClick={() =>
+              navigate("/newDevPost", {
+                state: { fromPageNum: pageNum },
+              })
+            }
+            className="self-center"
           >
             New Dev Post
           </button>
         )}
 
-        <div className="dev-posts-container">
+        <div className="flex flex-col gap-2 overflow-y-scroll">
           {devPostPage.map(({ title, content, readableDate, id }) => {
             return (
               <DevPost

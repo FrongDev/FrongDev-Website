@@ -28,7 +28,7 @@ function SideNav() {
   const { username, isLoggedIn, logout } = useContext(AccountContext);
 
   return (
-    <nav className="side-nav">
+    <nav className="side-nav max-w-25dvw group relative flex h-full min-w-fit flex-col border-l-nav-border-width border-r-nav-border-width border-frong-color pb-5 ">
       {/* Links */}
       {navPages.map(({ label, path, icon }) => {
         return <SideNavLink to={path} icon={icon} text={label} key={path} />;
@@ -37,12 +37,12 @@ function SideNav() {
       {/* Expand toggle */}
       <FAIconWrapper
         icon={sideNavExpanded ? faSquareCaretLeft : faSquareCaretRight}
-        className="side-nav-icon side-nav-toggle"
+        className="absolute right-0 top-1/2 mr-0 aspect-square h-[--nav-icon-size] translate-x-1/2 rounded-[5px] border-2 border-frong-color bg-my-white text-frong-color opacity-100 transition-opacity duration-200 group-hover:opacity-100 md:right-[var(--nav-half-border-width)] md:opacity-0"
         onClick={toggleSideNavExpanded}
       />
 
       {/* Fill empty space */}
-      <div className="flex-grow-1" />
+      <div className="flex-grow" />
 
       {/* Account Management */}
       {isLoggedIn ? (
@@ -70,10 +70,10 @@ function SideNavLine({ icon, text, onClick, underline }) {
 
   return (
     <div
-      className={`side-nav-line ${underline ? "clickable" : ""}`}
+      className={`side-nav-line ${underline ? "cursor-pointer" : ""}`}
       onClick={onClick}
     >
-      <FAIconWrapper icon={icon} className="side-nav-icon" />
+      <SideNavIcon icon={icon} />
       {sideNavExpanded && (
         <p className={underline ? "side-nav-link" : ""}>{text}</p>
       )}
@@ -85,12 +85,21 @@ function SideNavLink({ to, icon, text }) {
   const { sideNavExpanded } = useContext(SettingsContext);
 
   return (
-    <div className="side-nav-line clickable">
+    <div className="side-nav-line cursor-pointer">
       <Link to={to} className="side-nav-link">
-        <FAIconWrapper icon={icon} className="side-nav-icon" />
+        <SideNavIcon icon={icon} />
         {sideNavExpanded && text}
       </Link>
     </div>
+  );
+}
+
+function SideNavIcon({ icon, className }) {
+  return (
+    <FAIconWrapper
+      icon={icon}
+      className={`${className} mr-1 aspect-square h-[--nav-icon-size]`}
+    />
   );
 }
 

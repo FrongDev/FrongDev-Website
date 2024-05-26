@@ -7,9 +7,6 @@ import FAIconWrapper from "./FAIconWrapper.jsx";
 import "./FAIconWrapper.jsx";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
-// CSS
-import "../css/text-game.css";
-
 function PythonGame({ gameCode, middleHTML }) {
   const inputRef = useRef(null);
   const outputRef = useRef(null);
@@ -74,27 +71,36 @@ function PythonGame({ gameCode, middleHTML }) {
   }
 
   return (
-    <div className="text-game-padding">
-      <div className="text-game-container">
+    <div className="h-full w-full bg-[--background-color] p-[--text-game-container-padding]">
+      <div className="flex h-full w-full flex-col gap-[--page-content-padding-width]">
         {middleHTML}
-        <div className="text-game-menu">
-          <div ref={outputRef} className="text-game-output">
+        <div className="flex flex-shrink-0 flex-grow basis-[60%] flex-col gap-[--text-game-menu-top-padding] overflow-y-hidden rounded-[8px] bg-[--content-background-color] p-[--text-game-menu-padding] md:basis-1/2">
+          <div
+            ref={outputRef}
+            className="flex flex-grow flex-col gap-[--text-game-output-gap] overflow-y-scroll px-[17px] py-0"
+          >
             {output.map((line, index) => {
               return (
-                <p className="text-game-output-line" key={index}>
+                <p className="h-fit" key={index}>
                   {line}
                 </p>
               );
             })}
           </div>
-          <div className="text-game-controls">
+          <div className="flex h-[--text-game-input-height] flex-shrink-0 flex-grow-0 basis-[--text-game-input-height]">
             <FAIconWrapper
               icon={faPlay}
               onClick={runPythonCode}
-              className="text-game-play-button"
+              className="border-play-btn-border-width mr-[15px] aspect-square h-[--play-btn-content-size] rounded-[20%] border-[--light-green] bg-[--light-green] text-my-white"
             />
-            <input ref={inputRef} className="text-game-input" />
-            <button ref={submitRef} className="text-game-submit">
+            <input
+              ref={inputRef}
+              className="rounded-bl[3px] h-full w-0 flex-grow rounded-br-none rounded-tl-[3px] rounded-tr-none border-r-0"
+            />
+            <button
+              ref={submitRef}
+              className="flex h-full items-center rounded-bl-none rounded-br-[3px] rounded-tl-none rounded-tr-[3px] text-center"
+            >
               Submit
             </button>
           </div>
