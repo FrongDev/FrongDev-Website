@@ -35,12 +35,13 @@ select {
   font: inherit;
 }
 
+/* Default stylings */
 a {
-  color: var(--link-color);
+  color: var(--frong-color);
 }
 
 select {
-  border-radius: var(--select-border-radius);
+  border-radius: 4px;
 }
 
 input,

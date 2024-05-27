@@ -159,13 +159,13 @@ function Index() {
                     state: { fromPageNum: pageNum },
                   })
                 }
-                className="aspect-square h-5 rounded-[20%] border-play-btn-border-width border-[--light-green] bg-[--light-green] text-my-white"
+                className="aspect-square h-5 rounded-[20%] border-[5px] border-[--light-green] bg-[--light-green] text-my-white"
               />
             )}
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 overflow-y-scroll px-[12px]">
+        <div className="flex flex-col gap-2 overflow-x-hidden overflow-y-scroll px-[12px]">
           {devPostPage.map(({ title, content, readableDate, id }) => {
             return (
               <DevPost

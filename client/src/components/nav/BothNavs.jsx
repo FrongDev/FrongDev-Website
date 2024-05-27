@@ -9,7 +9,7 @@ function BothNavs({ children }) {
       <TopNav />
       <div className="mx-[--nav-margin-width] my-0 flex flex-grow overflow-hidden">
         <SideNav />
-        <div className="bg-content-background-color flex-grow p-[--page-content-padding-width]">
+        <div className="flex-grow overflow-x-hidden bg-[--content-background-color] p-[--page-content-padding-width]">
           {children}
         </div>
       </div>

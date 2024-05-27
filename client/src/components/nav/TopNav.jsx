@@ -19,7 +19,7 @@ function TopNav() {
   const { toggleDarkMode } = useContext(SettingsContext);
 
   return (
-    <nav className="m-[--nav-margin-width] mb-0 flex min-h-[--top-nav-height] min-w-[--top-nav-width] basis-[--top-nav-height] items-center overflow-hidden border-nav-border-width border-frong-color p-[--nav-padding-width]">
+    <nav className="m-[--nav-margin-width] mb-0 flex min-h-[4rem] min-w-[calc(100vw-2*var(--nav-margin-width))] basis-[4rem] items-center overflow-hidden border-nav-border-width border-frong-color p-[--nav-padding-width] sm:min-h-[6rem] sm:basis-[6rem]">
       <img src={frong_img} className="min-w-[40px]" />
       <h1 className="serif flex-grow p-[5px] text-center text-[2rem] font-bold tracking-wide">
         FRONG
@@ -28,7 +28,7 @@ function TopNav() {
       <FAIconWrapper
         icon={faCircleHalfStroke}
         onClick={toggleDarkMode}
-        className="fixed right-[--nav-icon-half-size] top-[--nav-icon-half-size] h-[--nav-icon-size] max-h-[--nav-icon-size]"
+        className="fixed right-[calc(var(--nav-icon-size)*0.5)] top-[calc(var(--nav-icon-size)*0.5)] h-[--nav-icon-size] max-h-[--nav-icon-size]"
       />
     </nav>
   );

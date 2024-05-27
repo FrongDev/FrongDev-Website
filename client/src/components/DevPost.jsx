@@ -20,9 +20,7 @@ function DevPost({
   return (
     <div className="rounded-[--dev-post-border-radius] bg-[--background-color] p-[6px]">
       <div className="flex flex-row items-start">
-        <h1 className="flex-grow text-dev-post-title-font-size font-semibold">
-          {title}
-        </h1>
+        <h1 className="flex-grow text-xl font-semibold sm:text-3xl">{title}</h1>
         {showEditBtn && (
           <FAIconWrapper
             icon={faPenToSquare}
@@ -35,9 +33,9 @@ function DevPost({
           />
         )}
       </div>
-      <h5 className="text-dev-post-date-font-size font-bold">{readableDate}</h5>
+      <h5 className="text-sm font-bold">{readableDate}</h5>
       <br />
-      <p className="text-dev-post-content-font-size">{content}</p>
+      <p className="text-base">{content}</p>
       {showCommentBtn && (
         <>
           <br />

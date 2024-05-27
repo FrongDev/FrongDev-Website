@@ -37,7 +37,7 @@ function SideNav() {
       {/* Expand toggle */}
       <FAIconWrapper
         icon={sideNavExpanded ? faSquareCaretLeft : faSquareCaretRight}
-        className="absolute right-0 top-1/2 mr-0 aspect-square h-[--nav-icon-size] translate-x-1/2 rounded-[5px] border-2 border-frong-color bg-my-white text-frong-color opacity-100 transition-opacity duration-200 group-hover:opacity-100 md:right-[var(--nav-half-border-width)] md:opacity-0"
+        className="absolute right-0 top-1/2 mr-0 aspect-square h-[--nav-icon-size] translate-x-1/2 rounded-[5px] border-2 border-frong-color bg-my-white text-frong-color opacity-100 transition-opacity duration-200 group-hover:opacity-100 md:right-[calc(var(--nav-border-width)*0.5)] md:opacity-0"
         onClick={toggleSideNavExpanded}
       />
 

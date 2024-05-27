@@ -12,61 +12,21 @@
 
   --frong-color: #6d75a3;
   --light-green: #60b99a;
-  --red: rgb(165, 53, 53);
-
-  --link-color: var(--frong-color);
-}
-
-/* Random constants */
-:root {
-  --select-border-radius: 4px;
 }
 
 /* Top nav stuff */
 :root {
-  --top-nav-width: calc(100vw - 2 * var(--nav-margin-width));
-  --top-nav-height: 6rem;
-
   --nav-margin-width: 5px;
-  --nav-border-width: 3px;
-  --nav-border: var(--nav-border-width) solid var(--frong-color);
-  --nav-half-border-width: calc(var(--nav-border-width) * 0.5);
   --nav-padding-width: 4px;
 
-  --logo-size: calc(var(--top-nav-height) - 2 * var(--nav-padding-width));
+  --nav-border-width: 3px;
+  --nav-border: var(--nav-border-width) solid var(--frong-color);
 
   --nav-icon-size: 1.5rem;
-  --nav-icon-half-size: calc(var(--nav-icon-size) * 0.5);
   --page-content-padding-width: 10px;
 }
 
 /* Dev blog stuff */
 :root {
-  --dev-post-title-font-size: 1.8rem;
-  --dev-post-date-font-size: 0.8rem;
-  --dev-post-content-font-size: 1rem;
-
   --dev-post-border-radius: 5px;
-}
-
-/* Text game stuff */
-:root {
-  --text-game-container-padding: 8px calc(0.3 * var(--nav-icon-size));
-
-  --text-game-menu-top-padding: 0.75rem;
-  --text-game-menu-padding: var(--text-game-menu-top-padding) 1ch;
-
-  --text-game-output-gap: 1.5rem;
-
-  --text-game-input-height: 2rem;
-
-  --play-btn-border-width: 5px;
-  --play-btn-content-size: calc(100% - 2 * var(--play-btn-border-width));
-}
-
-/* Mobile */
-@media only screen and (max-width: 640px) {
-  :root {
-    --top-nav-height: 4rem;
-  }
 }

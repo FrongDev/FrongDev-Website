@@ -71,13 +71,13 @@ function PythonGame({ gameCode, middleHTML }) {
   }
 
   return (
-    <div className="h-full w-full bg-[--background-color] p-[--text-game-container-padding]">
+    <div className="h-full w-full bg-[--background-color] px-[calc(0.4*var(--nav-icon-size))] py-[8px]">
       <div className="flex h-full w-full flex-col gap-[--page-content-padding-width]">
         {middleHTML}
-        <div className="flex flex-shrink-0 flex-grow basis-[60%] flex-col gap-[--text-game-menu-top-padding] overflow-y-hidden rounded-[8px] bg-[--content-background-color] p-[--text-game-menu-padding] md:basis-1/2">
+        <div className="flex flex-shrink-0 flex-grow basis-[60%] flex-col gap-3 overflow-y-hidden rounded-[8px] bg-[--content-background-color] px-[1ch] py-[0.75rem] md:basis-1/2">
           <div
             ref={outputRef}
-            className="flex flex-grow flex-col gap-[--text-game-output-gap] overflow-y-scroll px-[17px] py-0"
+            className="flex flex-grow flex-col gap-6 overflow-y-scroll px-[17px] py-0"
           >
             {output.map((line, index) => {
               return (
@@ -87,11 +87,11 @@ function PythonGame({ gameCode, middleHTML }) {
               );
             })}
           </div>
-          <div className="flex h-[--text-game-input-height] flex-shrink-0 flex-grow-0 basis-[--text-game-input-height]">
+          <div className="flex h-8 flex-shrink-0 flex-grow-0 basis-8">
             <FAIconWrapper
               icon={faPlay}
               onClick={runPythonCode}
-              className="border-play-btn-border-width mr-[15px] aspect-square h-[--play-btn-content-size] rounded-[20%] border-[--light-green] bg-[--light-green] text-my-white"
+              className="mr-[15px] aspect-square h-5 rounded-[20%] border-[5px] border-[--light-green] bg-[--light-green] text-my-white"
             />
             <input
               ref={inputRef}
